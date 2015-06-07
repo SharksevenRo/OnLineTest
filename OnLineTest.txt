@@ -1,0 +1,7 @@
+Create database OnlineTest;
+use OnlineTest;
+
+create table User(userId int not null  AUTO_INCREMENT,userName nvarchar(20),type nvarchar(10));
+create table Question(questionId not null  AUTO_INCREMENT,content text,type nvarchar(10));
+create table Record(recordId not null  AUTO_INCREMENT,userId int foreign key references User(userId),time timestamp);
+create table Message(messageId not null  AUTO_INCREMENT,content text,userName nvarchar(20),teacherId foreign key references User(userId),time timestamp)
