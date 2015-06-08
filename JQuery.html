@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+ <head>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+		$("#hide").click(function (){
+			$("#info1").hide();
+		});
+		
+		$("#hide2").click(function (){
+			$("#info1").hide(1000);
+		});
+		
+		$("#show").click(function (){
+			$("#info1").show(1000);
+		});
+		
+		$("#toggle").click(function (){
+			$("#info2").toggle();
+		});
+		
+		$(".btn1").click(function(){
+			$("#animate").animate({height:"300px"});
+		});
+		$(".btn2").click(function(){
+			$("#animate").animate({height:"100px"});
+		});
+		
+	});
+</script>
+</head>
+  <body>
+  <p id="info1">点击被隐藏</p>
+  
+  <button id="hide">隐藏</button>
+  <button id="hide2">隐藏（带时间的隐藏）</button>
+  <button id="show">显示（带时间的显示）</button>
+  
+  
+   <p id="info2">点击后被切换（隐藏和显示）</p>
+  <button id="toggle">切换</button><!-- 切换也是可以带参数的-->
+ 
+	<div id="animate" style="height:100px;background-color:#ff0000"></div>
+	<button class="btn1">Animate</button>
+	<button class="btn2">Reset</button>
+	
+  
+  
+  </body>
