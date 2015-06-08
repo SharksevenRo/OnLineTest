@@ -8,8 +8,8 @@
   <h1 align="center">欢迎来到在线测试系统</h1>
   <hr>
   <div align="center">
-  		<a href="${pageContext.request.contextPath }/login.jsp">登录</a><br>
-  		<a href="${pageContext.request.contextPath }/register.jsp"><font color="#ff0000">还没账号？注册</font></a><br>
+  		<a href="login">登录</a><br>
+  		<a href="register"><font color="#ff0000">还没账号？注册</font></a><br>
   </div>
   </body>
 </html>
