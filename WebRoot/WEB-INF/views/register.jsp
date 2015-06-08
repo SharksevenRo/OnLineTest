@@ -14,30 +14,37 @@
 </script>
 </head>
   <body>
-  <h1 align="center">用户登录</h1>
+  <h1 align="center">用户注册</h1>
   <hr>
   <div align="center">
-  <form action="${pageContext.request.contextPath }/">
+  <form action="register2" method="post">
  	 <table id="info">
  	 
  	 	<tr>
  	 		<td>工号/学号：</td><td><input type="text" name="userId"></td>
  	 	</tr>
  	 	<tr>
- 	 		<td>用户名：</td><td><input type="text" name="userId"></td>
+ 	 		<td>用户名：</td><td><input type="text" name="userName"></td>
  	 	</tr>
  	 	<tr>
- 	 		<td>密码：</td><td><input type="text" name="userId"></td>
+ 	 		<td>密码：</td><td><input type="password" name="password"></td>
  	 	</tr>
  	 	<tr>
- 	 		<td>用户类型：</td><td><input type="text" name="userId"></td>
+ 	 		<td>确认密码：</td><td><input type="password" name="confirmPassword"></td>
  	 	</tr>
  	 	<tr>
- 	 		<td>提交：</td><td><input type="text" name="userId"></td>
+ 	 		<td>用户类型：</td><td><select name="type">
+ 	 							<option value="default">请选择用户类型</option>
+ 	 							<option value="老师">老师</option>
+ 	 							<option value="学生">学生</option>
+ 	 							</select> 
+ 	 		                </td>
+ 	 	</tr>
+ 	 	<tr>
+ 	 		<td colspan="2" align="right"><input type="submit" value="注册"><input type="reset" value="重置"></td>
  	 	</tr>
   	 </table>
   </form>
-  <button id="hide">隐藏</button>
   </div>
   
   </body>

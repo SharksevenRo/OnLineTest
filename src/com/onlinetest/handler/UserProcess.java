@@ -19,7 +19,13 @@ import com.onlinetest.service.UserService;
 public class UserProcess {
 	
 	private UserService service;
-	@RequestMapping("/login")
+	
+	@RequestMapping("/register1")//用注解设置处理请求的url
+	public String register1(){
+		
+		System.out.println("login");
+		return "register";
+	}
 	public String login(){
 		
 		System.out.println("login");
@@ -31,8 +37,8 @@ public class UserProcess {
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping("/register")
-	public ModelAndView register(HttpServletRequest request){
+	@RequestMapping("/register2")//用注解设置处理请求的url
+	public ModelAndView register2(HttpServletRequest request){
 		
 		//实例化业务服务对象
 		service=MyFactory.getFactory().getInstance(UserService.class);
@@ -44,10 +50,20 @@ public class UserProcess {
 		String password=request.getParameter("password");
 		
 		User user=new User(userId, userName, password, type);
+		ModelAndView model;
 		
-		service.add(user);
+		if(service.add(user)){
+			
+			model=new ModelAndView();
+			request.getSession().setAttribute("user", user);
+			model.setViewName("index");
+		}else{
+			model=new ModelAndView();
+			model.setViewName("error");
+			model.addObject("errorMsg", "注册失败");
+		}
 		
-		return null;
+		return model;
 	}
 
 }
