@@ -1,9 +1,12 @@
 package com.onlinetest.handler;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.onlinetest.domain.User;
@@ -15,7 +18,9 @@ import com.onlinetest.service.UserService;
  * @author Administrator
  *
  */
+
 @Controller
+@SessionAttributes(value="user")
 public class UserProcess {
 	
 	private UserService service;
@@ -38,32 +43,23 @@ public class UserProcess {
 	 * @return
 	 */
 	@RequestMapping("/register2")//用注解设置处理请求的url
-	public ModelAndView register2(HttpServletRequest request){
+	public String register2(User user,Map<String, Object> map){
+		
 		
 		//实例化业务服务对象
 		service=MyFactory.getFactory().getInstance(UserService.class);
 		
-		//获取表单参数
-		String userId=request.getParameter("userId");
-		String userName=request.getParameter("userName");
-		String type=request.getParameter("type");
-		String password=request.getParameter("password");
 		
-		User user=new User(userId, userName, password, type);
-		ModelAndView model;
+		String dist="index";
 		
 		if(service.add(user)){
 			
-			model=new ModelAndView();
-			request.getSession().setAttribute("user", user);
-			model.setViewName("index");
+			map.put("user", user);
 		}else{
-			model=new ModelAndView();
-			model.setViewName("error");
-			model.addObject("errorMsg", "注册失败");
+			dist="error";
 		}
 		
-		return model;
+		return dist;
 	}
 
 }

@@ -10,12 +10,12 @@ import java.sql.PreparedStatement;
 public class InjectParamsUtil {
 	
 	/**
-	 * 
+	 * 动态给ps对象设置参数(适用于插入数据)
 	 * @param sql sql语句
 	 * @param ps PreparedStatement对象
 	 * @return
 	 */
-	public static PreparedStatement injectParams(String sql,PreparedStatement ps){
+	public static PreparedStatement injectParams(String sql,PreparedStatement p){
 		
 		return null;
 	}
