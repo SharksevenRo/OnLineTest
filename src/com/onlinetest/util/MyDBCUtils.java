@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * 数据库连接工具类
+ * 自定义数据库连接工具类和数据库连接池
  * @author shark
  *
  */
@@ -64,7 +64,7 @@ public class MyDBCUtils {
 	}
 
 	/**
-	 * 关数据库连接
+	 * 关闭数据库连接
 	 * @param sm  Statement对象实例
 	 * @param conn 连接对象实例
 	 */

@@ -18,26 +18,14 @@
   <hr>
   <div align="center">
   <form action="${pageContext.request.contextPath }/">
- 	 <table id="info">
- 	 
- 	 	<tr>
- 	 		<td>工号/学号：</td><td><input type="text" name="userId"></td>
- 	 	</tr>
- 	 	<tr>
- 	 		<td>用户名：</td><td><input type="text" name="userId"></td>
- 	 	</tr>
- 	 	<tr>
- 	 		<td>密码：</td><td><input type="text" name="userId"></td>
- 	 	</tr>
- 	 	<tr>
- 	 		<td>用户类型：</td><td><input type="text" name="userId"></td>
- 	 	</tr>
- 	 	<tr>
- 	 		<td>提交：</td><td><input type="text" name="userId"></td>
- 	 	</tr>
-  	 </table>
+ 	<p><label for="userId">学号/工号：</label>
+             <input id="userId" name="userId" type="text" placeholder="学号活学工号" required="required"  pattern="[0-9]{8}"/>
+     </p>
+    <p><label for="password">密码：</label>
+        <input id="password" name="password" type="password" placeholder="登录密码" required="required"/>
+    </p>
+    <input type="submit" value="登录"/>
   </form>
-  <button id="hide">隐藏</button>
   </div>
   
   </body>

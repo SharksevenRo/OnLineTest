@@ -2,12 +2,9 @@ package com.onlinetest.handler;
 
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.onlinetest.domain.User;
 import com.onlinetest.factory.MyFactory;
@@ -31,6 +28,8 @@ public class UserProcess {
 		System.out.println("login");
 		return "register";
 	}
+	
+	@RequestMapping("/loginPage")
 	public String login(){
 		
 		System.out.println("login");
@@ -53,7 +52,6 @@ public class UserProcess {
 		String dist="index";
 		
 		if(service.add(user)){
-			
 			map.put("user", user);
 		}else{
 			dist="error";

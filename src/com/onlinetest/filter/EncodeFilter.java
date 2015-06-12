@@ -44,7 +44,9 @@ public class EncodeFilter implements Filter {
 	 *
 	 */
 	private class MyHttpServletRequest extends HttpServletRequestWrapper{
+		
 		private  HttpServletRequest request = null;
+		//标记是否已经硬解码
 		private boolean isNotEncode = true;
 		public MyHttpServletRequest(HttpServletRequest request) {
 			super(request);
@@ -55,14 +57,21 @@ public class EncodeFilter implements Filter {
 		public Map<String,String[]> getParameterMap() {
 			try{
 				if(request.getMethod().equalsIgnoreCase("POST")){
-					request.setCharacterEncoding(encode);
+					//post方式提交
+					request.setCharacterEncoding(encode);//设置解码格式
 					return request.getParameterMap();
 				}else if(request.getMethod().equalsIgnoreCase("GET")){
-					Map<String,String[]> map = request.getParameterMap();
+					
+					//get方式提交
+					Map<String,String[]> map = request.getParameterMap();//获取保存请求参数的map
 					if(isNotEncode){
+						//还未硬解码
+						//遍历map
 						for(Map.Entry<String, String[]> entry : map.entrySet()){
 							String [] vs = entry.getValue();
 							for(int i=0;i<vs.length;i++){
+								
+								//对每个请求参数硬解码
 								vs[i] = new String(vs[i].getBytes("iso8859-1"),encode);
 							}
 						}

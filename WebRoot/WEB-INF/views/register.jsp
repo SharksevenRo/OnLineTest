@@ -21,16 +21,16 @@
  	 <table id="info">
  	 
  	 	<tr>
- 	 		<td>工号/学号：</td><td><input type="text" name="userId"></td>
+ 	 		<td>工号/学号：</td><td><input type="text" name="userId" placeholder="请填写学号或学工号"></td>
  	 	</tr>
  	 	<tr>
- 	 		<td>用户名：</td><td><input type="text" name="userName"></td>
+ 	 		<td>用户名：</td><td><input type="text" name="userName" placeholder="请填 写用户名"></td>
  	 	</tr>
  	 	<tr>
- 	 		<td>密码：</td><td><input type="password" name="password"></td>
+ 	 		<td>密码：</td><td><input type="password" name="password" placeholder="设置密码"></td>
  	 	</tr>
  	 	<tr>
- 	 		<td>确认密码：</td><td><input type="password" name="confirmPassword"></td>
+ 	 		<td>确认密码：</td><td><input type="password" name="confirmPassword" placeholder="确认密码"></td>
  	 	</tr>
  	 	<tr>
  	 		<td>用户类型：</td><td><select name="type">
