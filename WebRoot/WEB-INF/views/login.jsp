@@ -17,7 +17,7 @@
   <h1 align="center">用户登录</h1>
   <hr>
   <div align="center">
-  <form action="${pageContext.request.contextPath }/">
+  <form action="login/">
  	<p><label for="userId">学号/工号：</label>
              <input id="userId" name="userId" type="text" placeholder="学号活学工号" required="required"  pattern="[0-9]{8}"/>
      </p>

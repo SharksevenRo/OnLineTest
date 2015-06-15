@@ -22,5 +22,6 @@ public class TestJDBC {
 			String string = rs.getString(2);
 			System.out.println(string);
 		}
+		
 	}
 }

@@ -24,12 +24,12 @@ public class MyDBCUtils {
 	static {
 		for (int i = 0; i < 5; i++) {
 			try {
-				Class.forName("com.mysql.jdbc.Driver");
+				Class.forName("org.h2.Driver");
 				//创建连接实例
 				Connection conn = DriverManager
 						.getConnection(
-								"jdbc:mysql://localhost:3306/OnlineTest?useUnicode=true&characterEncoding=UTF-8",
-								"root", "root");
+								"jdbc:h2:tcp://localhost/E:/Workspace/OnLineTest/src/com/onlinetest/db",
+								"sa", "123");
 				connPool.add(conn);
 			} catch (Exception e) {
 				e.printStackTrace();

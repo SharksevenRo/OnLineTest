@@ -16,4 +16,18 @@ public interface UserDao {
 	 */
 	boolean add(User user);
 
+	/**
+	 * 查询是否存在该用户编号的记录
+	 * @param user
+	 * @return
+	 */
+	boolean isExit(User user);
+
+	/**
+	 * 根据的用户信息校验用户，即查询数据库
+	 * @param user
+	 * @return
+	 */
+	boolean login(User user);
+
 }

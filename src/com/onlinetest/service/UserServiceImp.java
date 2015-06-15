@@ -23,5 +23,15 @@ public class UserServiceImp implements UserService{
 		//调用数据库操作对象向数据库插入用户信息
 		return dao.add(user);
 	}
+	@Override
+	public boolean isExit(User user) {
+		
+		return dao.isExit(user);
+	}
+	@Override
+	public User login(User user) {
+		
+		return dao.login(user);
+	}
 
 }

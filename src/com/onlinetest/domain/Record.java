@@ -12,15 +12,14 @@ public class Record implements Serializable{
 
 	private String recordId; //记录编号
 	private String userId;	//答题学生编号
-	private String questionId; //题目编号
 	private String score;	//测试成绩
+	private Timestamp time; // 答题时间
 	
-	public Record(String recordId, String userId, String questionId,
+	public Record(String recordId, String userId,
 			String score, Timestamp time) {
 		super();
 		this.recordId = recordId;
 		this.userId = userId;
-		this.questionId = questionId;
 		this.score = score;
 		this.time = time;
 	}
@@ -30,9 +29,6 @@ public class Record implements Serializable{
 	public void setScore(String score) {
 		this.score = score;
 	}
-
-	private Timestamp time; // 答题时间
-	
 	public String getRecordId() {
 		return recordId;
 	}
@@ -44,12 +40,6 @@ public class Record implements Serializable{
 	}
 	public void setUserId(String userId) {
 		this.userId = userId;
-	}
-	public String getQuestionId() {
-		return questionId;
-	}
-	public void setQuestionId(String questionId) {
-		this.questionId = questionId;
 	}
 	public Timestamp getTime() {
 		return time;

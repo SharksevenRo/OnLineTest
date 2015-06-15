@@ -16,4 +16,18 @@ public interface UserService {
 	 */
 	boolean add(User user);
 
+	/**
+	 * 检出用户注册的账号是否已经被注册
+	 * @param user
+	 * @return
+	 */
+	boolean isExit(User user);
+
+	/**
+	 * 用户登录
+	 * @param user
+	 * @return
+	 */
+	User login(User user);
+
 }
