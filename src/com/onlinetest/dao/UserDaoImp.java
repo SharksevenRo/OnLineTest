@@ -77,7 +77,9 @@ public class UserDaoImp  implements UserDao{
 			//打包结果集的数据，获取存有所有结果对象的集合
 			List<User> users = ParamsUtil.setParams(rs, user);
 			
-			return users.get(0);
+			if(users.size()>0){
+				return users.get(0);
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
