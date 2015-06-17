@@ -13,8 +13,8 @@ public class Question implements Serializable{
 	private String questionId;//题目编号
 	private String userId;	//出题老师编号
 	private String content;  //题目内容
-	private String type;  //题目类型
 	private String answer; //答案
+	private String type;  //题目类型
 	private String options;//选项
 	
 	public String getUserId() {

@@ -22,13 +22,18 @@ public class MyDBCUtils {
 
 	//初始化数据库连接池
 	static {
+		
+		String path=MyDBCUtils.class.getClassLoader().getResource("db.mv.db").getPath();
+		path=path.substring(0,path.length()-6);
+		System.out.println(path);
 		for (int i = 0; i < 5; i++) {
+			
 			try {
 				Class.forName("org.h2.Driver");
 				//创建连接实例
 				Connection conn = DriverManager
 						.getConnection(
-								"jdbc:h2:tcp://localhost/E:/Workspace/OnLineTest/src/com/onlinetest/db",
+								"jdbc:h2:tcp://localhost"+path,
 								"sa", "123");
 				connPool.add(conn);
 			} catch (Exception e) {

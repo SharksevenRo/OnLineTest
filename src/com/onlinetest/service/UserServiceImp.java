@@ -1,5 +1,7 @@
 package com.onlinetest.service;
 
+import java.util.List;
+
 import com.onlinetest.dao.UserDao;
 import com.onlinetest.domain.User;
 import com.onlinetest.factory.MyFactory;
@@ -32,6 +34,11 @@ public class UserServiceImp implements UserService{
 	public User login(User user) {
 		
 		return dao.login(user);
+	}
+	@Override
+	public List<User> getUsersByType(User user) {
+
+		return dao.getUsersByType(user);
 	}
 
 }

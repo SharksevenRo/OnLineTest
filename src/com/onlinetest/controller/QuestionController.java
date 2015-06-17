@@ -1,8 +1,11 @@
 package com.onlinetest.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.OPTIONS;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -70,4 +73,23 @@ public class QuestionController {
 		return dist;
 	}
 
+	@RequestMapping("/questions")
+	public String questions(HttpSession session,Map<String,Object> map){
+		
+		service=MyFactory.getFactory().getInstance(QuestionService.class);
+		User user = (User) session.getAttribute("user");
+		
+		if(user!=null){
+			
+			List<Question> questions=service.getQuestionsByUserId(user.getUserId());
+			
+			if(questions!=null&&questions.size()>0){
+				map.put("questions", questions);
+				dist="questionList";
+			}else{
+				map.put("msg", "你还未出题记录");
+			}
+		}
+		return dist;
+	}
 }

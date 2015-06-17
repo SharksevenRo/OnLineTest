@@ -1,5 +1,7 @@
 package com.onlinetest.dao;
 
+import java.util.List;
+
 import com.onlinetest.domain.User;
 
 /**
@@ -29,5 +31,12 @@ public interface UserDao {
 	 * @return
 	 */
 	User login(User user);
+
+	/**
+	 * 查询是同意类型用户的所有记录
+	 * @param user
+	 * @return
+	 */
+	List<User> getUsersByType(User user);
 
 }

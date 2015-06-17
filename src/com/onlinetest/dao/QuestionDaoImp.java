@@ -3,6 +3,7 @@ package com.onlinetest.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 
 import com.onlinetest.domain.Question;
 import com.onlinetest.util.MyDBCUtils;
@@ -30,6 +31,22 @@ public class QuestionDaoImp implements QuestionDao{
 			e.printStackTrace();
 		}
 		return isSuccess;
+	}
+	@Override
+	public List<Question> getQuestionsByUserId(String userId) {
+		
+		List<Question> questions = null;
+		try {
+			conn=MyDBCUtils.getConnection();
+			ps=conn.prepareStatement("select * from question where userId=?");
+			ps.setString(1,userId);
+			
+			rs=ps.executeQuery();
+			questions = ParamsUtil.setParams(rs, new Question());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return questions;
 	}
 
 }

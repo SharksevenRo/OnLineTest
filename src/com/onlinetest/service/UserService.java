@@ -1,5 +1,7 @@
 package com.onlinetest.service;
 
+import java.util.List;
+
 import com.onlinetest.domain.User;
 
 /**
@@ -29,5 +31,12 @@ public interface UserService {
 	 * @return
 	 */
 	User login(User user);
+
+	/**
+	 * 获取同一类型所有的用户
+	 * @param user
+	 * @return
+	 */
+	List<User> getUsersByType(User user);
 
 }

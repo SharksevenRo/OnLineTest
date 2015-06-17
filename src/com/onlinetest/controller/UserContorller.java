@@ -1,9 +1,8 @@
 package com.onlinetest.controller;
 
-import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,7 +22,7 @@ import com.onlinetest.service.UserService;
  */
 
 @Controller
-@SessionAttributes(value = "user")
+@SessionAttributes(value = {"user","users"})
 public class UserContorller {
 
 	private String dist;
@@ -64,7 +63,8 @@ public class UserContorller {
 	public String register2(User user, Map<String, Object> map) {
 
 		// 实例化业务服务对象
-		UserService service = MyFactory.getFactory().getInstance(UserService.class);
+		UserService service = MyFactory.getFactory().getInstance(
+				UserService.class);
 
 		dist = "index";
 
@@ -75,6 +75,12 @@ public class UserContorller {
 
 		} else {
 			if (service.add(user)) {
+
+				if (user.getType().endsWith("学生")) {
+
+					List<User> teachers = service.getUsersByType(user);
+					map.put("users", teachers);
+				}
 				map.put("user", user);
 			} else {
 				dist = "error";
@@ -85,24 +91,30 @@ public class UserContorller {
 
 	/**
 	 * 用户登录校验
+	 * 
 	 * @param user
 	 * @param map
 	 * @return
 	 */
 	@RequestMapping("/login")
 	public String userLogin(User user, Map<String, Object> map) {
-		
-		UserService service = MyFactory.getFactory().getInstance(UserService.class);
-		String userId=user.getUserId();
-		user=service.login(user);
-		
-		
-		if(user!=null){
-			
-			dist="index";
+
+		UserService service = MyFactory.getFactory().getInstance(
+				UserService.class);
+		String userId = user.getUserId();
+		user = service.login(user);
+
+		if (user != null) {
+
+			dist = "index";
 			map.put("user", user);
-		}else{
-			
+			if (user.getType().endsWith("学生")) {
+
+				List<User> teachers = service.getUsersByType(user);
+				map.put("users", teachers);
+			}
+		} else {
+
 			map.put("msg", "密码或账号错误");
 			map.put("userId", userId);
 			dist = "login";
@@ -112,19 +124,22 @@ public class UserContorller {
 
 	/**
 	 * 用户注销登录
+	 * 
 	 * @return
 	 */
 	@RequestMapping("/logout")
-	public String logout(HttpServletRequest request,HttpServletResponse response){
-		
+	public String logout(HttpServletRequest request,
+			HttpServletResponse response) {
+
 		if (request.getSession(false) != null) {
 			request.getSession().invalidate();
 			try {
-				request.getRequestDispatcher("/index.jsp").forward(request, response);
+				request.getRequestDispatcher("/index.jsp").forward(request,
+						response);
 				return null;
 			} catch (Exception e) {
 				e.printStackTrace();
-			} 
+			}
 		}
 		return null;
 	}

@@ -88,5 +88,28 @@ public class UserDaoImp  implements UserDao{
 		}
 		return null;
 	}
+	@Override
+	public List<User> getUsersByType(User user) {
+		List<User> users = null;
+		try {
+			
+			conn=MyDBCUtils.getConnection();
+			ps=conn.prepareStatement("select * from user where type=?");
+			
+			if( user.getType().endsWith("学生")){
+				ps.setString(1,"老师");
+			}else{
+				ps.setString(1,"学生");
+			}
+			
+			
+			rs=ps.executeQuery();
+			users = ParamsUtil.setParams(rs, user);
+						
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return users;
+	}
 
 }

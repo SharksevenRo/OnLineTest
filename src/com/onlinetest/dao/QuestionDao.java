@@ -1,5 +1,7 @@
 package com.onlinetest.dao;
 
+import java.util.List;
+
 import com.onlinetest.domain.Question;
 
 public interface QuestionDao {
@@ -10,5 +12,12 @@ public interface QuestionDao {
 	 * @return
 	 */
 	boolean add(Question question);
+
+	/**
+	 * 根据出题人的编号查询题目记录
+	 * @param userId 
+	 * @return
+	 */
+	List<Question> getQuestionsByUserId(String userId);
 
 }

@@ -13,9 +13,21 @@
 </script>
 <style type="text/css">
 	#menu{
-		text-align:center;
+		width:100%;
 		height:200px;
 		background-color: #666699;
+	}
+	#userMenu{
+		text-align:right;
+		width:40%;
+		height:200px;
+		float: left;
+	}
+	#infoList{
+		text-align:center;
+		width:60%;
+		height:200px;
+		float: right;
 	}
 </style>
 </head>
@@ -46,10 +58,11 @@
 	</script>
  <hr>
  <div id="menu">
+ 	<div id="userMenu">
  		<c:if test="${sessionScope.user.type=='老师' }">
- 			
  			<br>
  				<a href="addQuestion">出题</a><br><br>
+ 				<a href="questions">我出的题</a><br><br>
  				<a href="#">查看答题记录</a><br><br>
  				<a href="#">查看学生留言</a><br><br>
  		</c:if>
@@ -61,6 +74,20 @@
  		
  		</c:if>
  		<a href="logout">注销登录</a>
+ 	</div>
+ 	<div id="infoList">
+ 		<br>
+ 		<c:if test="${sessionScope.user.type=='学生' }">
+ 		<label>出题的老师（点击老师名做老师的题目）</label><br><br>
+ 		<c:forEach items="${sessionScope.users}" var="user">
+ 			<a href="test?teacherId=${user.userId }"><c:out value="${user.userName }"></c:out></a><br><br>
+ 		</c:forEach>
+ 		</c:if>
+ 		<c:if test="${sessionScope.user.type=='老师' }">
+ 		<label>学生留言：</label>
+ 		</c:if>
  	</div>	
+ </div>
+ 	
   </body>
 </html>

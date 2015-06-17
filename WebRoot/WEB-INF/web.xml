@@ -57,5 +57,4 @@
 	  <url-pattern>*.css</url-pattern>  
 	</servlet-mapping>  
 		
-
 </web-app>
