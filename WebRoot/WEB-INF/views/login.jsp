@@ -17,7 +17,7 @@
   <h1 align="center">用户登录</h1>
   <hr>
   <div align="center">
-  <form action="login/" method="post">
+  <form action="login" method="post">
   
   	<p><font color="#ff0000"><c:out value="${requestScope.msg }"></c:out></font></p>
  	<p><label for="userId">学号/工号：</label>

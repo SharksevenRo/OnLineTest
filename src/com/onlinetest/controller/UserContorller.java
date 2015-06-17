@@ -1,9 +1,8 @@
-package com.onlinetest.handler;
+package com.onlinetest.controller;
 
 import java.io.IOException;
 import java.util.Map;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,7 +24,7 @@ import com.onlinetest.service.UserService;
 
 @Controller
 @SessionAttributes(value = "user")
-public class UserProcess {
+public class UserContorller {
 
 	private String dist;
 
@@ -91,7 +90,7 @@ public class UserProcess {
 	 * @return
 	 */
 	@RequestMapping("/login")
-	public String login(User user, Map<String, Object> map) {
+	public String userLogin(User user, Map<String, Object> map) {
 		
 		UserService service = MyFactory.getFactory().getInstance(UserService.class);
 		String userId=user.getUserId();
@@ -120,8 +119,13 @@ public class UserProcess {
 		
 		if (request.getSession(false) != null) {
 			request.getSession().invalidate();
-			dist="index";
+			try {
+				request.getRequestDispatcher("/index.jsp").forward(request, response);
+				return null;
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
 		}
-		return dist;
+		return null;
 	}
 }

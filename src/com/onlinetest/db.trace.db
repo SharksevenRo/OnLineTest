@@ -222,3 +222,54 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/Workspace
 	at org.h2.mvstore.FileStore.open(FileStore.java:172)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:337)
 	... 43 more
+06-17 11:08:38 jdbc[8]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+delete table question [42102-187]
+06-17 11:10:44 jdbc[9]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP QUESTION[*] "; expected "TABLE, INDEX, USER, SEQUENCE, CONSTANT, TRIGGER, VIEW, ROLE, ALIAS, SCHEMA, ALL, DOMAIN, TYPE, DATATYPE, AGGREGATE"; SQL statement:
+drop question [42001-187]
+06-17 11:12:03 jdbc[9]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "NVARCAHR"; SQL statement:
+create table Question(questionId  nvarchar(50) not null primary key,userId nvarchar(50),content text,answer nvarcahr(255),type nvarchar(10),options text,foreign key(userId) references user(userId)) [50004-187]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:4000)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3863)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5771)
+	at org.h2.command.Parser.parseCreate(Parser.java:4159)
+	at org.h2.command.Parser.parsePrepared(Parser.java:350)
+	at org.h2.command.Parser.parse(Parser.java:305)
+	at org.h2.command.Parser.parse(Parser.java:277)
+	at org.h2.command.Parser.prepareCommand(Parser.java:242)
+	at org.h2.engine.Session.prepareLocal(Session.java:461)
+	at org.h2.engine.Session.prepareCommand(Session.java:403)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1189)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1390)
+	at org.h2.server.web.WebApp.query(WebApp.java:1063)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1025)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1012)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Thread.java:745)
+06-17 12:07:17 jdbc[25]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-187]
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:174)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:119)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:750)
+	at org.h2.server.web.WebApp.login(WebApp.java:957)
+	at org.h2.server.web.WebApp.process(WebApp.java:211)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:170)
+	at org.h2.server.web.WebThread.process(WebThread.java:137)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.h2.jdbc.JdbcSQLException: The connection was not closed by the application and is garbage collected [90018-187]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 14 more

@@ -15,6 +15,7 @@ public class Question implements Serializable{
 	private String content;  //题目内容
 	private String type;  //题目类型
 	private String answer; //答案
+	private String options;//选项
 	
 	public String getUserId() {
 		return userId;
@@ -50,13 +51,20 @@ public class Question implements Serializable{
 	}
 	
 	public Question(String questionId, String userId, String content,
-			String type, String answer) {
+			String type, String answer, String options) {
 		super();
 		this.questionId = questionId;
 		this.userId = userId;
 		this.content = content;
 		this.type = type;
 		this.answer = answer;
+		this.options = options;
+	}
+	public String getOptions() {
+		return options;
+	}
+	public void setOptions(String options) {
+		this.options = options;
 	}
 	public Question(){}
 }

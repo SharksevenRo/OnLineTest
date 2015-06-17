@@ -7,7 +7,8 @@
 <script type="text/javascript">
 	
 	$(document).ready(function(){
-		$("#menu").slideDown("slow");
+	
+		$("#menu").hide().slideDown("slow");
 	});
 </script>
 <style type="text/css">
@@ -19,7 +20,7 @@
 </style>
 </head>
   <body>
- <h1 align="center"></label>${sessionScope.user.userName }的用户主页&nbsp&nbsp<label id="type"><font color="#11ee44">${sessionScope.user.type }</font></h1>
+ <h1 align="center"></label>${sessionScope.user.userName }的主页&nbsp&nbsp<label id="type"><font color="#11ee44">${sessionScope.user.type }</font></h1>
  <canvas id="headCanvas" width="100" height="110" style="border:1px solid #c3c3c3;">
 	浏览器不支持
 </canvas>
@@ -30,10 +31,10 @@
 		var src;
 		var text;
 		if(type=="老师"){
-			src="../image/teacher.jpg";
+			src="image/teacher.jpg";
 			text="我是老师";
 		}if(type=="学生"){
-			src="../image/student.jpg";
+			src="image/student.jpg";
 			text="我是学生";
 		}
 		var c=document.getElementById("headCanvas");
@@ -48,7 +49,7 @@
  		<c:if test="${sessionScope.user.type=='老师' }">
  			
  			<br>
- 				<a href="#">出题</a><br><br>
+ 				<a href="addQuestion">出题</a><br><br>
  				<a href="#">查看答题记录</a><br><br>
  				<a href="#">查看学生留言</a><br><br>
  		</c:if>

@@ -2,7 +2,7 @@ Create database OnlineTest;
 use OnlineTest;
 
 create table User(userId nvarchar(50) not null primary key,userName nvarchar(20),password nvarchar(50),type nvarchar(10));
-create table Question(questionId  nvarchar(50) not null primary key,userId nvarchar(50),content text,answer nvarcahr(255),type nvarchar(10),foreign key(userId) references user(userId));
+create table Question(questionId  nvarchar(50) not null primary key,userId nvarchar(50),content text,answer nvarchar(255),type nvarchar(10),options text,foreign key(userId) references user(userId));
 create table Record(recordId  nvarchar(50) not null primary key,userId nvarchar(50),foreign key(userId) references User(userId),score nvarchar(10),time timestamp);
 create table Message(messageId nvarchar(50) not null primary key,content text,toUser nvarchar(20),fromUser nvarchar(20),time timestamp)
 
