@@ -22,7 +22,7 @@
   </style>
   </head>
   <body>
-  <h1 align="center">出题</h1>
+  <h1 align="center">出题&nbsp<a href="back">回到主页</h1>
   <hr>
   	<form action="question_add" method="post">
   	<div align="center">

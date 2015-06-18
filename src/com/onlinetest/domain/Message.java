@@ -13,8 +13,8 @@ public class Message implements Serializable{
 	
 	private  String messageId;//留言编号
 	private String content;	//留言内容
-	private String fromUser;//留言者
 	private String toUser;//收件者
+	private String fromUser;//留言者
 	private Timestamp time;//留言时间
 	
 	public String getMessageId() {
@@ -48,13 +48,13 @@ public class Message implements Serializable{
 		this.time = time;
 	}
 	public Message(String messageId, String content, String fromUser,
-			String toUser, Timestamp time) {
+			String toUser,Timestamp time) {
 		super();
 		this.messageId = messageId;
 		this.content = content;
 		this.fromUser = fromUser;
 		this.toUser = toUser;
-		this.time = time;
+		this.time=time;
 	}
 	
 	public Message(){}

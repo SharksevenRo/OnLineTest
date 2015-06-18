@@ -19,7 +19,7 @@
   </style>
   </head>
   <body>
-  <h1 align="center">出题记录</h1>
+  <h1 align="center">出题记录&nbsp<a href="back">回到主页</h1>
   <hr>
   <div id="questions">
   	<c:forEach items="${requestScope.questions }" var="question">

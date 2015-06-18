@@ -64,7 +64,6 @@
  				<a href="addQuestion">出题</a><br><br>
  				<a href="questions">我出的题</a><br><br>
  				<a href="#">查看答题记录</a><br><br>
- 				<a href="#">查看学生留言</a><br><br>
  		</c:if>
  		<c:if test="${sessionScope.user.type=='学生' }">
  			<br>
@@ -77,14 +76,24 @@
  	</div>
  	<div id="infoList">
  		<br>
- 		<c:if test="${sessionScope.user.type=='学生' }">
+ 		<c:if test="${sessionScope.user.type=='学生'&&sessionScope.users!=null}">
  		<label>出题的老师（点击老师名做老师的题目）</label><br><br>
  		<c:forEach items="${sessionScope.users}" var="user">
  			<a href="test?teacherId=${user.userId }"><c:out value="${user.userName }"></c:out></a><br><br>
  		</c:forEach>
  		</c:if>
- 		<c:if test="${sessionScope.user.type=='老师' }">
- 		<label>学生留言：</label>
+ 		<c:if test="${sessionScope.user.type=='老师'&&sessionScope.messages!=null }">
+ 		<label>学生留言：</label><p>
+ 		<table align="center">
+ 			<c:forEach items="${sessionScope.messages}" var="message">
+ 			<tr>
+ 				<td align="left">
+ 			${message.time }:<br><label>${message.fromUser }说:${message.content }</label><br>
+ 			</td>
+ 			</tr>
+ 			</c:forEach>
+ 		</table>
+ 		
  		</c:if>
  	</div>	
  </div>

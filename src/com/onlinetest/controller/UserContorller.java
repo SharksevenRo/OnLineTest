@@ -10,8 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.onlinetest.domain.Message;
 import com.onlinetest.domain.User;
 import com.onlinetest.factory.MyFactory;
+import com.onlinetest.service.MessageService;
 import com.onlinetest.service.UserService;
 
 /**
@@ -22,7 +24,7 @@ import com.onlinetest.service.UserService;
  */
 
 @Controller
-@SessionAttributes(value = {"user","users"})
+@SessionAttributes(value = {"user","users","messages"})
 public class UserContorller {
 
 	private String dist;
@@ -108,10 +110,16 @@ public class UserContorller {
 
 			dist = "index";
 			map.put("user", user);
-			if (user.getType().endsWith("学生")) {
+			if (user.getType().equals("学生")) {
 
 				List<User> teachers = service.getUsersByType(user);
 				map.put("users", teachers);
+			}
+			if(user.getType().equals("老师")){
+				
+				MessageService mService=MyFactory.getFactory().getInstance(MessageService.class);
+				List<Message> messages=mService.getMessagesById(user.getUserId());
+				map.put("messages", messages);
 			}
 		} else {
 
@@ -142,5 +150,12 @@ public class UserContorller {
 			}
 		}
 		return null;
+	}
+	
+	@RequestMapping("/back")
+	public String backMain(){
+		
+		dist="index";
+		return dist;
 	}
 }
